@@ -14,7 +14,6 @@ while (option != "4"):
     menu()
     option = input("Select an option:")
     if option == "1":
-        print("Hello")
         expense_name = input("Enter expense name:  ")
         expense_amount = float(input("Enter amount: "))
         print("Expense added!")
@@ -27,3 +26,4 @@ while (option != "4"):
         for amount in expenses_amount_list:
             total = total + amount
         print(f"total: {total}")
+print("Thanks for using the Expense Tracker!")
