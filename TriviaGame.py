@@ -1,25 +1,30 @@
-def menu():
+def menu() -> str:
+    option = 0
     print("===== TRIVIA GAME ===== \n \n"
           "1. Start Game \n"
           "2. View Categories\n"
           "3.View High Score\n"
           "4. Exit")
-    option = input("Select an option: ")
+    try:
+        option = int(input("Select an option: "))
+    except ValueError:
+        print("Please type a number!")
     return option
 
 
-categories = {"What's my name?": "General"}
+categories = {"General", "Science", "History"}
 
 
-def asking_question():
+def asking_question() -> int:
     points = 0
-    choices = {"What's my name?": "A. Ethan \n B. Aidan \n C.Haseeb \n D.Hitesh"}
-    answers = {"What's my name?": "A"}
-    for question in choices:
+    questions = ("What's my name?",)
+    choices = ("A. Ethan \n B. Aidan \n C.Haseeb \n D.Hitesh",)
+    answers = ("A",)
+    for index, question in enumerate(questions):
         print(question)
-        print(choices[question])
+        print(choices[index])
         answer = input("Choose an answer: ")
-        if answer.upper() == answers[question]:
+        if answer.upper() == answers[index]:
             points += 5
     print("Your score: " + str(points))
     return points
@@ -28,16 +33,16 @@ def asking_question():
 highscore = 0
 option = menu()
 
-while option != "4":
-    if option == "1":
+while option != 4:
+    if option == 1:
         score = asking_question()
         if highscore < score:
             print("NEW HIGH SCORE!!!")
             highscore = score
-    if option == "2":
+    if option == 2:
         for category in categories:
-            print(categories[category])
-    if option == "3":
+            print(category)
+    if option == 3:
 
         print("High Score: " + str(highscore))
 
