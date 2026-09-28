@@ -16,21 +16,37 @@ def menu() -> int:
         print("Please input a number!")
     return option 
 def add_task():
-    input = input("Add a task: ")
-    tasks.append(input)
+    added_task = str(input("Add a task: "))
+    tasks.append(added_task)
     print("Task Added")
 def view_tasks():
     for index, task in enumerate(tasks):
-        print(f"{index}. {task}/n")
+        print(f"{index}. {task}")
 def delete_task(delete_task):
-    for task in tasks:
-        if delete_task == task:
+    for index,task in enumerate(tasks):
+        if index == delete_task:
             tasks.remove(task)
 def search_task(certain_task)-> str:
+    upper_certain_task = certain_task.upper()
     for task in tasks:
         if certain_task in task:
             return task
     return "Task not found"
+def tasks_to_caps():
+    upper_tasks = []
+    for task in tasks:
+        upper_tasks.append(task.upper())
+    return upper_tasks
 tasks = []
+option = menu()
 while option != 9:
-    menu()
+    if option == 1:
+        add_task()
+    if option == 2:
+        view_tasks()
+    if option == 3:
+        print(search_task(input("Search task: ")))
+    if option == 4:
+        deleted_task = input("Completed task number: ")
+        delete_task(deleted_task)
+    option = menu()
