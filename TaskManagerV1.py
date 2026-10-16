@@ -35,9 +35,8 @@ def delete_task(delete_task):
 
 
 def search_task(certain_task) -> str:
-    upper_certain_task = certain_task.upper()
     for task in tasks:
-        if certain_task in task:
+        if certain_task.upper() in task.upper():
             return task
     return "Task not found"
 
